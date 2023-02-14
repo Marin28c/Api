@@ -37,18 +37,18 @@
                   <th>Eliminar</th>
               </tr>
           </thead>
-          <tbody>
-              <tr v-for="(user, users) in users" :key="user.id.value">
-                  <td><img :src="user.picture.thumbnail" style="border-radius: 100%;"></td>
-                  <td v-text="user.name.first +' '+ user.name.last"></td>
-                  <td v-text="user.dob.age"></td>
-                  <td v-text="user.nat "></td>
-                  <td><img crossorigin="anonymous" :src="getFlagUrl(user.nat) " style="width: 40px;" /></td>
-                  <td v-text="user.email"></td>
-                  <td v-text="user.phone"></td>
-                  <td v-text="user.cell"></td>
+          <tbody v-for="(item, users) in users" :key="item.id.value">
+              <tr v-if="item != user">
+                  <td><img :src="item.picture.thumbnail" style="border-radius: 100%;"></td>
+                  <td v-text="item.name.first +' '+ item.name.last"></td>
+                  <td v-text="item.dob.age"></td>
+                  <td v-text="item.nat "></td>
+                  <td><img crossorigin="anonymous" :src="getFlagUrl(item.nat) " style="width: 40px;" /></td>
+                  <td v-text="item.email"></td>
+                  <td v-text="item.phone"></td>
+                  <td v-text="item.cell"></td>
                   <td>
-                    <button @click="removeUser(users)" type="button" class="btn btn-outline-danger">Eliminar</button>
+                    <button @click="removeUser(item)" type="button" class="btn btn-outline-danger">Eliminar</button>
                   </td>
               </tr>
           </tbody>
@@ -60,7 +60,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-    <script src="api.js"></script>
+    <script src="user.js"></script>
     
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
       </html>
